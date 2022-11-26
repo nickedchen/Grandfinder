@@ -64,6 +64,7 @@ dependencies {
     // Firebase UI
     implementation 'com.firebaseui:firebase-ui-auth:8.0.2'
     implementation 'com.firebaseui:firebase-ui-database:8.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
     // Testing dependencies
     testImplementation 'junit:junit:4.13.2'
