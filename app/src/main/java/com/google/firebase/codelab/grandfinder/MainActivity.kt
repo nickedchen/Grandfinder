@@ -123,6 +123,9 @@ class MainActivity : AppCompatActivity() {
         //set title bar to show user name and profile photo
         supportActionBar?.title = getUserName()
         supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setLogo(R.drawable.ic_account_circle_black_36dp)
+
     }
 
     public override fun onStart() {
