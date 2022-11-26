@@ -12,10 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".landingPage"
-            android:exported="false" />
+            android:name=".MainActivity2"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
-            android:name="com.google.firebase.codelab.grandfinder.MainActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +27,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.google.firebase.codelab.grandfinder.SignInActivity" />
+        <activity android:name=".SignInActivity" />
     </application>
 
 </manifest>
