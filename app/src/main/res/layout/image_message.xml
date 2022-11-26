@@ -28,7 +28,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         app:layout_constraintStart_toStartOf="@id/messageImageView"
         app:layout_constraintTop_toBottomOf="@id/messageImageView"
-        tools:text="FirstName LastName" />
+        tools:text="FirstName LastName"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/messengerImageView"
