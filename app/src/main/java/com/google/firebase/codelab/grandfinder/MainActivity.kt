@@ -114,10 +114,15 @@ class MainActivity : AppCompatActivity() {
             binding.messageEditText.setText("")
         }
 
+
         // When the image button is clicked, launch the image picker
         binding.addMessageImageView.setOnClickListener {
             openDocument.launch(arrayOf("image/*"))
         }
+
+        //set title bar to show user name and profile photo
+        supportActionBar?.title = getUserName()
+        supportActionBar?.setDisplayShowHomeEnabled(true)
     }
 
     public override fun onStart() {
