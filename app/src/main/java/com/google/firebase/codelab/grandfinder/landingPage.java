@@ -21,9 +21,6 @@ public class landingPage extends AppCompatActivity {
     }public void jump(View view){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-    }public void trial(View view){
-        Intent intent = new Intent(this, MainActivity2.class);
-        startActivity(intent);
     }public void onEditBio(View view) {
         Intent intent = new Intent(this, CreateBio.class);
         startActivity(intent);
