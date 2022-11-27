@@ -102,8 +102,7 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private fun goToMainActivity() {
-        val intent = Intent(this, landingPage::class.java)
-        startActivity(intent)
+        startActivity(Intent(this, landingPage::class.java))
     }
 
     companion object {
