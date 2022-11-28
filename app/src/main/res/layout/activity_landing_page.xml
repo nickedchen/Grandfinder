@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context="com.google.firebase.codelab.grandfinder.landingPage">
 
+
+
     <ImageView
         android:id="@+id/PhotoView"
         android:layout_width="251dp"
@@ -63,6 +65,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageButton
+    
         android:id="@+id/editBio"
         android:layout_width="34dp"
         android:layout_height="31dp"
@@ -110,6 +113,7 @@
         android:layout_height="31dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="33dp"
+        android:onClick="notif"
         app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintEnd_toStartOf="@+id/chat"
         app:layout_constraintTop_toTopOf="parent"
@@ -152,9 +156,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
-        android:layout_marginBottom="456dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.337"
         app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
 
     <ImageButton
@@ -162,9 +167,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="80dp"
-        android:layout_marginBottom="456dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/imageLeft"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.337"
         app:srcCompat="@drawable/ic_baseline_arrow_forward_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
