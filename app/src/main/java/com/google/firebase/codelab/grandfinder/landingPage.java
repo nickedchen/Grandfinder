@@ -108,17 +108,22 @@ public class landingPage extends AppCompatActivity {
                 return true;
 
             case R.id.notification_menu:
-                // User chose the "notification" item, show the notification activity
+                startActivity(new Intent(this, notificationPage.class));
                 return true;
 
             case R.id.chat:
-                Intent intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(this, MainActivity.class));
+                return true;
+
+            case R.id.edit_profile_menu:
+                startActivity(new Intent(this, CreateBio.class));
                 return true;
 
             case R.id.sign_out_menu:
                 signOut();
                 return true;
+
+
 
             default:
                 // If we got here, the user's action was not recognized.
