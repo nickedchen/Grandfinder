@@ -17,6 +17,7 @@ public class landingPage extends AppCompatActivity {
         setContentView(R.layout.activity_landing_page);
     }
 
+
     @Override
      public boolean onCreateOptionsMenu(Menu menu){
            getMenuInflater().inflate(R.menu.main_menu, menu);
@@ -56,5 +57,9 @@ public class landingPage extends AppCompatActivity {
         startActivity(new Intent(this, SignInActivity.class));
     }
 
+    public void notif(View view){
+        Intent intent = new Intent(this, notificationPage.class);
+        startActivity(intent);
+    }
 
 }
