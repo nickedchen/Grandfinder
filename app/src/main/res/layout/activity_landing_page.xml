@@ -111,6 +111,7 @@
         android:layout_height="31dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="33dp"
+        android:onClick="notif"
         app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintEnd_toStartOf="@+id/chat"
         app:layout_constraintTop_toTopOf="parent"

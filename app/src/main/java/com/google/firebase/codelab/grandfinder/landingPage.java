@@ -25,4 +25,8 @@ public class landingPage extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity2.class);
         startActivity(intent);
     }
+    public void notif(View view){
+        Intent intent = new Intent(this, notificationPage.class);
+        startActivity(intent);
+    }
 }
