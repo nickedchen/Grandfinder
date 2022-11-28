@@ -1,28 +1,60 @@
 package com.google.firebase.codelab.grandfinder;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
 
-import com.google.firebase.codelab.grandfinder.R;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+
+import com.firebase.ui.auth.AuthUI;
 
 public class landingPage extends AppCompatActivity {
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing_page);
-        TextView txt = findViewById(R.id.nameBio);
-        txt.setText("TESTED");
-
-    }public void jump(View view){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }public void trial(View view){
-        Intent intent = new Intent(this, MainActivity2.class);
-        startActivity(intent);
     }
+
+    @Override
+     public boolean onCreateOptionsMenu(Menu menu){
+           getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+
+            case R.id.notification_menu:
+                // User chose the "notification" item, show the notification activity
+                return true;
+
+            case R.id.chat:
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                return true;
+
+            case R.id.sign_out_menu:
+                signOut();
+                return true;
+
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
+
+    private void signOut() {
+        AuthUI.getInstance().signOut(this);
+        startActivity(new Intent(this, SignInActivity.class));
+    }
+
+
 }
