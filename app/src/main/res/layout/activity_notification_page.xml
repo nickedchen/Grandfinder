@@ -12,66 +12,40 @@
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="52dp"
         android:onClick="goToLanding"
         android:text="BACK"
-        app:layout_constraintBottom_toTopOf="@+id/imageView3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="329dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="498dp"
-        android:onClick="goToMessage"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.195"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backbut"
-        app:srcCompat="@drawable/greypill" />
-
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="327dp"
-        android:layout_height="84dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="68dp"
-        android:onClick="goToMessage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:srcCompat="@drawable/greypill" />
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="62dp"
         android:layout_height="0dp"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginBottom="17dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        android:layout_marginTop="92dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/backbut"
         app:srcCompat="@drawable/ic_account_circle_black_36dp" />
 
     <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="60dp"
-        android:layout_height="47dp"
+        android:id="@+id/imageView12"
+        android:layout_width="62dp"
+        android:layout_height="0dp"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="172dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/backbut"
         app:srcCompat="@drawable/ic_account_circle_black_36dp" />
 
     <ImageView
         android:id="@+id/imageView11"
         android:layout_width="97dp"
         android:layout_height="77dp"
-        android:layout_marginTop="11dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="342dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7"
+        app:layout_constraintTop_toBottomOf="@+id/imageView12"
         app:srcCompat="@drawable/logo" />
 
     <TextView
@@ -79,34 +53,58 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="41dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="80dp"
         android:onClick="goToLanding"
         android:text="Looking good! Keep on swiping!"
         android:textSize="16sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/imageView11"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView14" />
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="168dp"
-        android:layout_marginEnd="132dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="108dp"
         android:onClick="goToMessage"
         android:text="You got new message!"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/backbut" />
 
     <TextView
-        android:id="@+id/textView8"
-        android:layout_width="142dp"
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="256dp"
-        android:layout_marginEnd="132dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="184dp"
         android:onClick="goToMessage"
         android:text="You got new message!"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/backbut" />
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView12"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        app:srcCompat="@drawable/blackline" />
+
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView12"
+        app:srcCompat="@drawable/blackline" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
