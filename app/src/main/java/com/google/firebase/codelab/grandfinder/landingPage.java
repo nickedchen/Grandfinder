@@ -1,5 +1,7 @@
 package com.google.firebase.codelab.grandfinder;
 
+import static com.google.firebase.codelab.grandfinder.MainActivity.ANONYMOUS;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -54,7 +56,8 @@ public class landingPage extends AppCompatActivity {
 
     private void signOut() {
         AuthUI.getInstance().signOut(this);
-        startActivity(new Intent(this, SignInActivity.class));
+        Intent intent = new Intent(this, SignInActivity.class);
+        startActivity(intent);
     }
 
     public void notif(View view){
