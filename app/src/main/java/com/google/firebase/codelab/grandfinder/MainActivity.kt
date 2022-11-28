@@ -25,7 +25,6 @@ import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.firebase.ui.auth.AuthUI
-import com.firebase.ui.auth.AuthUI.IdpConfig.*
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -124,8 +123,12 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.title = getUserName()
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setLogo(R.drawable.ic_account_circle_black_36dp)
 
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
     public override fun onStart() {
@@ -232,7 +235,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun signOut() {
+    public fun signOut() {
         AuthUI.getInstance().signOut(this)
         startActivity(Intent(this, landingPage::class.java))
         finish()
