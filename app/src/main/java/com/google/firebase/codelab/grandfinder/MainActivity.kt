@@ -121,7 +121,6 @@ class MainActivity : AppCompatActivity() {
 
         //set title bar to show user name and profile photo
         supportActionBar?.title = getUserName()
-        supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
     }
