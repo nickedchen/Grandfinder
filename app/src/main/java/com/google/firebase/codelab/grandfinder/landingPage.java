@@ -1,6 +1,5 @@
 package com.google.firebase.codelab.grandfinder;
 
-import static com.google.firebase.codelab.grandfinder.MainActivity.ANONYMOUS;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -31,20 +30,25 @@ import com.firebase.ui.auth.AuthUI;
 
 
 public class landingPage extends AppCompatActivity {
-    ArrayList<String> names = new ArrayList<>();
     private DatabaseReference database = FirebaseDatabase.getInstance().getReference();
-    
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_landing_page);
-        TextView txt = findViewById(R.id.nameBio);
-        getData();
-        txt.setText(names.toString());
+        ArrayList<String> names = new ArrayList<>();
+        ArrayList<String> hobbies = new ArrayList<>();
+        ArrayList<String> personality = new ArrayList<>();
+        ArrayList<String> habits = new ArrayList<>();
+        getData(names, hobbies, personality, habits);
+        System.out.println("DONE");
+        System.out.println(names.toString());
 
     }public void jump(View view){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-    }public void getData(){
+    }public void getData(ArrayList<String> names,ArrayList<String> hobbies,ArrayList<String> personality,ArrayList<String> habits){
         TextView txt = findViewById(R.id.nameBio);
         DatabaseReference myRef = database.child("UserInfo");
         System.out.println(myRef.toString());
@@ -54,22 +58,24 @@ public class landingPage extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 // this method is call to get the realtime
                 TextView txt = findViewById(R.id.nameBio);
-                TextView txt2 = findViewById(R.id.bio1);
                 for(DataSnapshot snapshot1 : snapshot.getChildren()) {
                     String ma  = snapshot1.child("Name").getValue().toString();
-                    String ma2  = snapshot1.child("Personality").getValue().toString();
+                    String ma2  = snapshot1.child("Hobbies").getValue().toString();
+                    String ma3  = snapshot1.child("Personality").getValue().toString();
+                    String ma4  = snapshot1.child("Habits").getValue().toString();
                     txt.setText(ma);
-                    txt2.setText(ma2);
+                    names.add(ma);
+                    hobbies.add(ma2);
+                    personality.add(ma3);
+                    habits.add(ma4);
 
                 }
-
-//                ArrayList<String> toReturn = new ArrayList<>();
-//                for(DataSnapshot snapshot1 : snapshot.getChildren()){
-//                    String ma = snapshot1.child("Name").getValue().toString();
-
-//                    toReturn.add(ma);
-//                }
-
+                TextView txt2 = findViewById(R.id.bio1);
+                String test1 = "Hobbies: " + hobbies.get(0) + "\n";
+                String test2 = "Personality: " + personality.get(0) + "\n";
+                String test3 = "Habits: " + habits.get(0) + "\n";
+                String initial = test1 + test2 + test3;
+                txt2.setText(initial);
             }
 
             @Override
@@ -86,9 +92,11 @@ public class landingPage extends AppCompatActivity {
 //    }
 
 
+
+
     @Override
-     public boolean onCreateOptionsMenu(Menu menu){
-           getMenuInflater().inflate(R.menu.main_menu, menu);
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
 
@@ -100,22 +108,17 @@ public class landingPage extends AppCompatActivity {
                 return true;
 
             case R.id.notification_menu:
-                startActivity(new Intent(this, notificationPage.class));
+                // User chose the "notification" item, show the notification activity
                 return true;
 
             case R.id.chat:
-                startActivity(new Intent(this, MainActivity.class));
-                return true;
-
-            case R.id.edit_profile_menu:
-                startActivity(new Intent(this, CreateBio.class));
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
                 return true;
 
             case R.id.sign_out_menu:
                 signOut();
                 return true;
-
-
 
             default:
                 // If we got here, the user's action was not recognized.
@@ -127,14 +130,27 @@ public class landingPage extends AppCompatActivity {
 
     private void signOut() {
         AuthUI.getInstance().signOut(this);
-        Intent intent = new Intent(this, SignInActivity.class);
-        startActivity(intent);
+        startActivity(new Intent(this, SignInActivity.class));
     }
 
     public void notif(View view){
         Intent intent = new Intent(this, notificationPage.class);
         startActivity(intent);
+    }public void like(View view) {
+        next();
+    }public void next(){
+
     }
+    public void setText(ArrayList<String> names,ArrayList<String> hobbies,ArrayList<String> personality,ArrayList<String> habits){
 
+        TextView txt = findViewById(R.id.nameBio);
+        TextView txt2 = findViewById(R.id.bio1);
+        txt.setText(names.get(0));
+        String test1 = "Hobbies: " + hobbies.get(0) + "\n";
+        String test2 = "Personality: " + personality.get(0) + "\n";
+        String test3 = "Habits: " + habits.get(0) + "\n";
+        String initial = test1 + test2 + test3;
+        txt2.setText(initial);
 
+    }
 }
