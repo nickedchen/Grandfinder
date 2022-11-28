@@ -107,6 +107,10 @@ public class landingPage extends AppCompatActivity {
                 startActivity(new Intent(this, MainActivity.class));
                 return true;
 
+            case R.id.edit_profile_menu:
+                startActivity(new Intent(this, CreateBio.class));
+                return true;
+
             case R.id.sign_out_menu:
                 signOut();
                 return true;
