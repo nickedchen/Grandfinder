@@ -101,8 +101,7 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private fun goToMainActivity() {
-        startActivity(Intent(this, MainActivity::class.java))
-        finish()
+        startActivity(Intent(this, landingPage::class.java))
     }
 
     companion object {
