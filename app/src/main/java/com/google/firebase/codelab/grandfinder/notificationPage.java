@@ -14,8 +14,8 @@ public class notificationPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification_page);
 
+        setContentView(R.layout.activity_notification_page);
         ActionBar actionBar = getSupportActionBar();
-
         actionBar.setTitle("Notifications");
         actionBar.setDisplayHomeAsUpEnabled(true);
     }
@@ -23,5 +23,10 @@ public class notificationPage extends AppCompatActivity {
      public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    public void goToMessage(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
