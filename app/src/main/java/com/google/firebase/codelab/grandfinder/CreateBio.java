@@ -7,14 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
-<<<<<<< Updated upstream
-=======
 import android.widget.Toast;
 import android.widget.ImageView;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
->>>>>>> Stashed changes
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -63,11 +58,24 @@ public class CreateBio extends AppCompatActivity {
         else
             habits = "none";
 
-
         String message1 = editText1.getText().toString();
         String message2 = editText2.getText().toString();
         String message3 = editText3.getText().toString();
         String message4 = editText4.getText().toString();
+
+        if (message1.matches("")) {
+            Toast.makeText(getApplicationContext(), "Please fill in your name", Toast.LENGTH_SHORT).show();
+            return;
+        } else if (message2.matches("")){
+            Toast.makeText(getApplicationContext(), "Please fill in your personality", Toast.LENGTH_SHORT).show();
+            return;
+        } else if(message3.matches("")) {
+            Toast.makeText(getApplicationContext(), "Please fill in your hobby", Toast.LENGTH_SHORT).show();
+            return;
+        }else if(message4.matches("")) {
+            Toast.makeText(getApplicationContext(), "Please fill in the about you space", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         myRef.child("User1").child("Name").setValue(message1);
         myRef.child("User1").child("Hobby").setValue(message2);
