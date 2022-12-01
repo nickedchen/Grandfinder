@@ -16,7 +16,10 @@
     <string name="Editprofile">Edit Profile</string>
     <string name="chat">Chat</string>
     <string name="signout">Sign Out</string>
+    <string name="signoutprompt">Sign Out</string>
     <string name="notifications">Notifications</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
 
     <string-array name="array_technology">
         <item>Android</item>

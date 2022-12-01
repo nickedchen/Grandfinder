@@ -1,8 +1,10 @@
 package com.google.firebase.codelab.grandfinder;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -32,6 +34,7 @@ import com.firebase.ui.auth.AuthUI;
 public class landingPage extends AppCompatActivity {
     private DatabaseReference database = FirebaseDatabase.getInstance().getReference();
     int i = 0;
+
     ArrayList<String> names = new ArrayList<>();
     ArrayList<String> hobbies = new ArrayList<>();
     ArrayList<String> personality = new ArrayList<>();
@@ -44,22 +47,23 @@ public class landingPage extends AppCompatActivity {
         next();
         System.out.println("DONE");
         System.out.println(names.toString());
-    }public void jump(View view){
+    }
+
+    public void jump(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-    }public void getData(ArrayList<String> names,ArrayList<String> hobbies,ArrayList<String> personality,ArrayList<String> habits, String bo){
+    }
+
+    public void getData(ArrayList<String> names, ArrayList<String> hobbies, ArrayList<String> personality, ArrayList<String> habits, String bo) {
         System.out.println("Current is " + i);
         TextView txt = findViewById(R.id.nameBio);
         DatabaseReference myRef = database.child("UserInfo");
         System.out.println(myRef.toString());
         DatabaseReference ex = myRef.child("User1");
-        if(bo == "undo"){
-            i = i-1;
+        if (bo == "undo") {
+            i = i - 1;
         }
-//        names.clear();
-//        hobbies.clear();
-//        personality.clear();
-//        habits.clear();
+//
         myRef.addValueEventListener(new ValueEventListener() {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 try {
@@ -85,16 +89,17 @@ public class landingPage extends AppCompatActivity {
                     txt2.setText(initial);
                     txt.setText(names.get(i).toString());
                     i++;
-                    if(i >= names.size()-1){
-                        i = names.size()-1;
-                    }else if( i < 0){
-                        i= 0;
+                    if (i >= names.size() - 1) {
+                        i = names.size() - 1;
+                    } else if (i < 0) {
+                        i = 0;
                     }
                     System.out.println("After is " + i);
                 } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), "No more people", Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 // calling on cancelled method when we receive
@@ -102,17 +107,9 @@ public class landingPage extends AppCompatActivity {
             }
         });
     }
-//    }private void String getPhotoUrl() {
-//
-//        String user = auth.currentUser;
-//        return user?.photoUrl?.toString()
-//    }
-
-
-
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
@@ -141,34 +138,55 @@ public class landingPage extends AppCompatActivity {
                 return true;
 
 
-
             default:
-                // If we got here, the user's action was not recognized.
-                // Invoke the superclass to handle it.
                 return super.onOptionsItemSelected(item);
 
         }
     }
 
     private void signOut() {
-        AuthUI.getInstance().signOut(this);
-        startActivity(new Intent(this, SignInActivity.class));
-    }public void undo(View view){
-        i = i-1;
+        String signout = "Are you sure you want to sign out?";
+        String confirm = "Confirm";
+        String cancel = "Cancel";
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this,R.style.AlertDialog);
+        builder.setTitle("Signing Out");
+        builder.setMessage(signout)
+                .setPositiveButton(confirm, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        AuthUI.getInstance().signOut(landingPage.this);
+                        finish();
+                    }
+                })
+                .setNegativeButton(cancel, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User cancelled the dialog
+                    }
+                });
+        builder.create().show();
+    }
+
+    public void undo(View view) {
+        i = i - 1;
         System.out.println(i);
         getData(names, hobbies, personality, habits, "undo");
     }
 
-    public void notif(View view){
+    public void notif(View view) {
         Intent intent = new Intent(this, notificationPage.class);
         startActivity(intent);
-    }public void like(View view) {
+    }
+
+    public void like(View view) {
         next();
-    }public void next(){
+    }
+
+    public void next() {
 
         getData(names, hobbies, personality, habits, "do");
     }
-    public void setText(ArrayList<String> names,ArrayList<String> hobbies,ArrayList<String> personality,ArrayList<String> habits){
+
+    public void setText(ArrayList<String> names, ArrayList<String> hobbies, ArrayList<String> personality, ArrayList<String> habits) {
 
         TextView txt = findViewById(R.id.nameBio);
         TextView txt2 = findViewById(R.id.bio1);

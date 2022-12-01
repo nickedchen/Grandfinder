@@ -234,9 +234,9 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    public fun signOut() {
+    private fun signOut() {
         AuthUI.getInstance().signOut(this)
-        startActivity(Intent(this, landingPage::class.java))
+        startActivity(Intent(this, SignInActivity::class.java))
         finish()
     }
 
