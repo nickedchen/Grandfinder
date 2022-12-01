@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,7 +32,7 @@ public class CreateBio extends AppCompatActivity {
         return true;
     }
 
-    public void saveChange(View view){
+    public void saveChange(View view) {
         DatabaseReference myRef = database.child("UserProfile");
 
         EditText editText1 = (EditText) findViewById(R.id.name);
@@ -41,32 +42,45 @@ public class CreateBio extends AppCompatActivity {
 
         String habits = "";
 
-        c1 = (CheckBox)findViewById(R.id.checkBox1);
-        c2 = (CheckBox)findViewById(R.id.checkBox2);
-        c3 = (CheckBox)findViewById(R.id.checkBox3);
+        c1 = (CheckBox) findViewById(R.id.checkBox1);
+        c2 = (CheckBox) findViewById(R.id.checkBox2);
+        c3 = (CheckBox) findViewById(R.id.checkBox3);
 
-        if(c1.isChecked() && c2.isChecked() && c3.isChecked())
+        if (c1.isChecked() && c2.isChecked() && c3.isChecked())
             habits = "Smoking, Alcohol, Drugs";
-        else if(c1.isChecked() && c2.isChecked() && !c3.isChecked())
+        else if (c1.isChecked() && c2.isChecked() && !c3.isChecked())
             habits = "Smoking, Alcohol";
-        else if(c1.isChecked() && !c2.isChecked() && c3.isChecked())
+        else if (c1.isChecked() && !c2.isChecked() && c3.isChecked())
             habits = "Smoking, Drugs";
-        else if(!c1.isChecked() && c2.isChecked() && c3.isChecked())
+        else if (!c1.isChecked() && c2.isChecked() && c3.isChecked())
             habits = "Alcohol, Drugs";
-        else if(c1.isChecked() && !c2.isChecked() && !c3.isChecked())
+        else if (c1.isChecked() && !c2.isChecked() && !c3.isChecked())
             habits = "Smoking";
-        else if(!c1.isChecked() && c2.isChecked() && !c3.isChecked())
+        else if (!c1.isChecked() && c2.isChecked() && !c3.isChecked())
             habits = "Alcohol";
-        else if(!c1.isChecked() && !c2.isChecked() && c3.isChecked())
+        else if (!c1.isChecked() && !c2.isChecked() && c3.isChecked())
             habits = "Drugs";
-        else
+        else if (!c1.isChecked() && !c2.isChecked() && !c3.isChecked())
             habits = "none";
-
 
         String message1 = editText1.getText().toString();
         String message2 = editText2.getText().toString();
         String message3 = editText3.getText().toString();
         String message4 = editText4.getText().toString();
+
+        if (message1.matches("")) {
+            Toast.makeText(getApplicationContext(), "Please fill in your name", Toast.LENGTH_SHORT).show();
+            return;
+        } else if (message2.matches("")){
+            Toast.makeText(getApplicationContext(), "Please fill in your personality", Toast.LENGTH_SHORT).show();
+            return;
+        } else if(message3.matches("")) {
+            Toast.makeText(getApplicationContext(), "Please fill in your hobby", Toast.LENGTH_SHORT).show();
+            return;
+        }else if(message4.matches("")) {
+            Toast.makeText(getApplicationContext(), "Please fill in the about you space", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         myRef.child("User1").child("Name").setValue(message1);
         myRef.child("User1").child("Hobby").setValue(message2);
