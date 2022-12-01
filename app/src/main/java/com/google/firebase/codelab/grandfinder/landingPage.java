@@ -14,6 +14,7 @@ import android.view.View;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
@@ -61,8 +62,10 @@ public class landingPage extends AppCompatActivity {
         System.out.println(myRef.toString());
         DatabaseReference ex = myRef.child("User1");
         if (bo == "undo") {
-            i = i - 1;
+            i = i - 1;// Might be an issue here, what if i is 0?
         }
+
+        setImages(i);// Sets the images
 //
         myRef.addValueEventListener(new ValueEventListener() {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -168,6 +171,7 @@ public class landingPage extends AppCompatActivity {
 
     public void undo(View view) {
         i = i - 1;
+        setImages(i);// Sets the images
         System.out.println(i);
         getData(names, hobbies, personality, habits, "undo");
     }
@@ -182,8 +186,25 @@ public class landingPage extends AppCompatActivity {
     }
 
     public void next() {
-
         getData(names, hobbies, personality, habits, "do");
+    }
+
+    public void setImages(int i) {
+        ImageView img = findViewById(R.id.PhotoView);
+        switch (i){
+            case 0:
+                img.setImageResource(R.drawable.profilepic1);
+                break;
+            case 1:
+                img.setImageResource(R.drawable.profilepic2);
+                break;
+            case 2:
+                img.setImageResource(R.drawable.profilepic3);
+                break;
+            case 3:
+                img.setImageResource(R.drawable.profilepic4);
+                break;
+        }
     }
 
     public void setText(ArrayList<String> names, ArrayList<String> hobbies, ArrayList<String> personality, ArrayList<String> habits) {
