@@ -7,6 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+<<<<<<< Updated upstream
+=======
+import android.widget.Toast;
+import android.widget.ImageView;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+>>>>>>> Stashed changes
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -14,6 +22,9 @@ import com.google.firebase.database.FirebaseDatabase;
 public class CreateBio extends AppCompatActivity {
     private DatabaseReference database = FirebaseDatabase.getInstance().getReference();
     private CheckBox c1, c2, c3;
+    int i = 0;
+    private int[] myImages = {R.drawable.mete1, R.drawable.mete2, R.drawable.mete3};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,12 +75,27 @@ public class CreateBio extends AppCompatActivity {
         myRef.child("User1").child("About").setValue(message4);
         myRef.child("User1").child("Habits").setValue(habits);
 
+        Toast.makeText(getApplicationContext(), "Success Creating Bio", Toast.LENGTH_LONG).show();
+
         Intent intent = new Intent(this, landingPage.class);
         startActivity(intent);
     }
 
-    public void onBack(View view){
-        Intent intent = new Intent(this, landingPage.class);
-        startActivity(intent);
+    public void next(View view){
+        i++;
+        if(i == 3) {
+            i = 0;
+        }
+        ImageView image = (ImageView) findViewById(R.id.imageView);
+        image.setImageResource(myImages[i]);
+    }
+
+    public void previous(View view){
+        i--;
+        if(i == -1) {
+            i = 3;
+        }
+        ImageView img = (ImageView) findViewById(R.id.imageView);
+        img.setImageResource(myImages[i]);
     }
 }
