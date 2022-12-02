@@ -26,13 +26,13 @@ public class CreateBio extends AppCompatActivity {
         setContentView(R.layout.activity_create_bio);
 
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Your Profile");
-    }
-
-    public void saveChange(View view) {
-        ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Create Bio");
         actionBar.setDisplayHomeAsUpEnabled(true);
+    }
+
+    public void goToMessage(View view) {
+        Intent intent = new Intent(this, landingPage.class);
+        startActivity(intent);
     }
 
     @Override
