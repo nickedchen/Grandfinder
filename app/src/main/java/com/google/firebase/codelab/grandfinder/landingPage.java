@@ -53,6 +53,9 @@ public class landingPage extends AppCompatActivity {
             String value = bundle.getString("name");
             TextView textView = findViewById(R.id.textView6);
             textView.setText("Signed in as " + value);
+        } else{
+            TextView textView = findViewById(R.id.textView6);
+            textView.setText("Please create a bio by clicking the person icon on top of the page");
         }
     }
 
