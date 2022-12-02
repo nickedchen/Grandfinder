@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.ImageView;
 
-
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -24,10 +23,21 @@ public class CreateBio extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_bio);
-
     }
 
     public void saveChange(View view){
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Create Bio");
+        actionBar.setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
+    public void saveChange(View view) {
         DatabaseReference myRef = database.child("UserProfile");
 
         EditText editText1 = (EditText) findViewById(R.id.name);
@@ -56,6 +66,27 @@ public class CreateBio extends AppCompatActivity {
         else if(!c1.isChecked() && !c2.isChecked() && c3.isChecked())
             habits = "Drugs";
         else
+        
+        c1 = (CheckBox) findViewById(R.id.checkBox1);
+        c2 = (CheckBox) findViewById(R.id.checkBox2);
+        c3 = (CheckBox) findViewById(R.id.checkBox3);
+
+        if (c1.isChecked() && c2.isChecked() && c3.isChecked())
+            habits = "Smoking, Alcohol, Drugs";
+        else if (c1.isChecked() && c2.isChecked() && !c3.isChecked())
+            habits = "Smoking, Alcohol";
+        else if (c1.isChecked() && !c2.isChecked() && c3.isChecked())
+            habits = "Smoking, Drugs";
+        else if (!c1.isChecked() && c2.isChecked() && c3.isChecked())
+            habits = "Alcohol, Drugs";
+        else if (c1.isChecked() && !c2.isChecked() && !c3.isChecked())
+            habits = "Smoking";
+        else if (!c1.isChecked() && c2.isChecked() && !c3.isChecked())
+            habits = "Alcohol";
+        else if (!c1.isChecked() && !c2.isChecked() && c3.isChecked())
+            habits = "Drugs";
+        else if (!c1.isChecked() && !c2.isChecked() && !c3.isChecked())
+
             habits = "none";
 
         String message1 = editText1.getText().toString();
@@ -83,11 +114,13 @@ public class CreateBio extends AppCompatActivity {
         myRef.child("User1").child("About").setValue(message4);
         myRef.child("User1").child("Habits").setValue(habits);
 
+
         Toast.makeText(getApplicationContext(), "Success Creating Bio", Toast.LENGTH_LONG).show();
 
         Intent intent = new Intent(this, landingPage.class);
         startActivity(intent);
     }
+
 
     public void next(View view){
         i++;
@@ -105,5 +138,9 @@ public class CreateBio extends AppCompatActivity {
         }
         ImageView img = (ImageView) findViewById(R.id.imageView);
         img.setImageResource(myImages[i]);
+
+    public void onBack(View view){
+        Intent intent = new Intent(this, landingPage.class);
+        startActivity(intent);
     }
 }

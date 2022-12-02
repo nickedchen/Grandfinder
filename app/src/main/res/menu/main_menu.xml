@@ -2,7 +2,26 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/edit_profile_menu"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="@string/Editprofile"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/chat"
+        android:icon="@drawable/ic_baseline_chat_24"
+        android:title="@string/chat"
+        app:showAsAction="ifRoom"/>
+
+    <item
         android:id="@+id/sign_out_menu"
-        android:title="@string/sign_out"
-        app:showAsAction="never"/>
+        android:icon="@drawable/ic_baseline_logout_24"
+        android:title="@string/signout"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/notification_menu"
+        android:icon="@drawable/ic_baseline_notifications_24"
+        android:title="@string/notifications"
+        app:showAsAction="ifRoom"/>
 </menu>
