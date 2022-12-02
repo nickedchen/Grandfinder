@@ -26,7 +26,7 @@ public class CreateBio extends AppCompatActivity {
         setContentView(R.layout.activity_create_bio);
     }
 
-    public void saveChange(View view){
+    public void saveChange(View view) {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Create Bio");
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -48,27 +48,27 @@ public class CreateBio extends AppCompatActivity {
 
         String habits = "";
 
-        c1 = (CheckBox)findViewById(R.id.checkBox1);
-        c2 = (CheckBox)findViewById(R.id.checkBox2);
-        c3 = (CheckBox)findViewById(R.id.checkBox3);
+        c1 = (CheckBox) findViewById(R.id.checkBox1);
+        c2 = (CheckBox) findViewById(R.id.checkBox2);
+        c3 = (CheckBox) findViewById(R.id.checkBox3);
 
-        if(c1.isChecked() && c2.isChecked() && c3.isChecked())
+        if (c1.isChecked() && c2.isChecked() && c3.isChecked())
             habits = "Smoking, Alcohol, Drugs";
-        else if(c1.isChecked() && c2.isChecked() && !c3.isChecked())
+        else if (c1.isChecked() && c2.isChecked() && !c3.isChecked())
             habits = "Smoking, Alcohol";
-        else if(c1.isChecked() && !c2.isChecked() && c3.isChecked())
+        else if (c1.isChecked() && !c2.isChecked() && c3.isChecked())
             habits = "Smoking, Drugs";
-        else if(!c1.isChecked() && c2.isChecked() && c3.isChecked())
+        else if (!c1.isChecked() && c2.isChecked() && c3.isChecked())
             habits = "Alcohol, Drugs";
-        else if(c1.isChecked() && !c2.isChecked() && !c3.isChecked())
+        else if (c1.isChecked() && !c2.isChecked() && !c3.isChecked())
             habits = "Smoking";
-        else if(!c1.isChecked() && c2.isChecked() && !c3.isChecked())
+        else if (!c1.isChecked() && c2.isChecked() && !c3.isChecked())
             habits = "Alcohol";
-        else if(!c1.isChecked() && !c2.isChecked() && c3.isChecked())
+        else if (!c1.isChecked() && !c2.isChecked() && c3.isChecked())
             habits = "Drugs";
         else
-        
-        c1 = (CheckBox) findViewById(R.id.checkBox1);
+
+            c1 = (CheckBox) findViewById(R.id.checkBox1);
         c2 = (CheckBox) findViewById(R.id.checkBox2);
         c3 = (CheckBox) findViewById(R.id.checkBox3);
 
@@ -98,13 +98,13 @@ public class CreateBio extends AppCompatActivity {
         if (message1.matches("")) {
             Toast.makeText(getApplicationContext(), "Please fill in your name", Toast.LENGTH_SHORT).show();
             return;
-        } else if (message2.matches("")){
+        } else if (message2.matches("")) {
             Toast.makeText(getApplicationContext(), "Please fill in your personality", Toast.LENGTH_SHORT).show();
             return;
-        } else if(message3.matches("")) {
+        } else if (message3.matches("")) {
             Toast.makeText(getApplicationContext(), "Please fill in your hobby", Toast.LENGTH_SHORT).show();
             return;
-        }else if(message4.matches("")) {
+        } else if (message4.matches("")) {
             Toast.makeText(getApplicationContext(), "Please fill in the about you space", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -123,25 +123,21 @@ public class CreateBio extends AppCompatActivity {
     }
 
 
-    public void next(View view){
+    public void next(View view) {
         i++;
-        if(i == 3) {
+        if (i == 3) {
             i = 0;
         }
         ImageView image = (ImageView) findViewById(R.id.imageView);
         image.setImageResource(myImages[i]);
     }
 
-    public void previous(View view){
+    public void previous(View view) {
         i--;
-        if(i == -1) {
+        if (i == -1) {
             i = 3;
         }
         ImageView img = (ImageView) findViewById(R.id.imageView);
         img.setImageResource(myImages[i]);
-
-    public void onBack(View view){
-        Intent intent = new Intent(this, landingPage.class);
-        startActivity(intent);
     }
 }
