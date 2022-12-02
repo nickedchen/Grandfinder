@@ -24,6 +24,9 @@ public class CreateBio extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_bio);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Your Profile");
     }
 
     public void saveChange(View view) {

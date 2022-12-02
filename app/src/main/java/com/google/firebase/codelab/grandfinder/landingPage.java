@@ -1,6 +1,7 @@
 package com.google.firebase.codelab.grandfinder;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -35,7 +36,6 @@ import com.firebase.ui.auth.AuthUI;
 public class landingPage extends AppCompatActivity {
     private DatabaseReference database = FirebaseDatabase.getInstance().getReference();
     int i = 0;
-
     ArrayList<String> names = new ArrayList<>();
     ArrayList<String> hobbies = new ArrayList<>();
     ArrayList<String> personality = new ArrayList<>();
@@ -43,7 +43,6 @@ public class landingPage extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_landing_page);
         next();
         System.out.println("DONE");
@@ -56,17 +55,18 @@ public class landingPage extends AppCompatActivity {
     }
 
     public void getData(ArrayList<String> names, ArrayList<String> hobbies, ArrayList<String> personality, ArrayList<String> habits, String bo) {
-        System.out.println("Current is " + i);
+        //Initialize the elements
         TextView txt = findViewById(R.id.nameBio);
         DatabaseReference myRef = database.child("UserInfo");
-        System.out.println(myRef.toString());
+    //    Toast.makeText(getApplicationContext(), "Current is " + i, Toast.LENGTH_SHORT).show();
+
         DatabaseReference ex = myRef.child("User1");
         if (bo == "undo") {
-            i = i - 1;// Might be an issue here, what if i is 0?
+            if (i > 0) {
+                i--;
+            }
         }
-
-        setImages(i);// Sets the images
-//
+        setImages(i);
         myRef.addValueEventListener(new ValueEventListener() {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 try {
@@ -88,15 +88,22 @@ public class landingPage extends AppCompatActivity {
                     String test1 = "Hobbies: " + hobbies.get(i) + "\n";
                     String test2 = "Personality: " + personality.get(i) + "\n";
                     String test3 = "Habits: " + habits.get(i) + "\n";
+
                     String initial = test1 + test2 + test3;
                     txt2.setText(initial);
-                    txt.setText(names.get(i).toString());
-                    i++;
-                    if (i >= names.size() - 1) {
-                        i = names.size() - 1;
-                    } else if (i < 0) {
+                    txt.setText(names.get(i));
+
+                    if (i == names.size() - 1) {
                         i = 0;
                     }
+                    else{
+                        i++;
+                    }
+
+                    if (i < 0) {
+                        i = 0;
+                    }
+
                     System.out.println("After is " + i);
                 } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), "No more people", Toast.LENGTH_SHORT).show();
@@ -152,7 +159,7 @@ public class landingPage extends AppCompatActivity {
         String confirm = "Confirm";
         String cancel = "Cancel";
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this,R.style.AlertDialog);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialog);
         builder.setTitle("Signing Out");
         builder.setMessage(signout)
                 .setPositiveButton(confirm, new DialogInterface.OnClickListener() {
@@ -176,12 +183,12 @@ public class landingPage extends AppCompatActivity {
         getData(names, hobbies, personality, habits, "undo");
     }
 
-    public void notif(View view) {
-        Intent intent = new Intent(this, notificationPage.class);
-        startActivity(intent);
+    public void like(View view) {
+        Toast.makeText(getApplicationContext(), "Liked the profile!", Toast.LENGTH_SHORT).show();
+        next();
     }
 
-    public void like(View view) {
+    public void nextbtn(View view) {
         next();
     }
 
@@ -191,7 +198,7 @@ public class landingPage extends AppCompatActivity {
 
     public void setImages(int i) {
         ImageView img = findViewById(R.id.PhotoView);
-        switch (i){
+        switch (i) {
             case 0:
                 img.setImageResource(R.drawable.profilepic1);
                 break;
@@ -203,6 +210,9 @@ public class landingPage extends AppCompatActivity {
                 break;
             case 3:
                 img.setImageResource(R.drawable.profilepic4);
+                break;
+            case 4:
+                img.setImageResource(R.drawable.profilepic5);
                 break;
         }
     }

@@ -171,6 +171,18 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                true
+            }
+            R.id.notification_menu -> {
+                startActivity(Intent(this, notificationPage::class.java))
+                true
+            }
+            R.id.edit_profile_menu -> {
+                startActivity(Intent(this, CreateBio::class.java))
+                true
+            }
             R.id.sign_out_menu -> {
                 signOut()
                 true
