@@ -181,6 +181,9 @@ public class landingPage extends AppCompatActivity {
         setImages(i);// Sets the images
         System.out.println(i);
         getData(names, hobbies, personality, habits, "undo");
+    }public void dislike(View view){
+        Toast.makeText(getApplicationContext(), "Disliked the profile!", Toast.LENGTH_SHORT).show();
+        next();
     }
 
     public void like(View view) {

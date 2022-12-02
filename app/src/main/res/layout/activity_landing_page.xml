@@ -85,7 +85,7 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/roundedactionbutton"
         android:drawableStart="@drawable/ic_baseline_thumb_down_24"
-        android:onClick="like"
+        android:onClick="dislike"
         android:paddingStart="10dip"
         android:text="Dislike"
         android:textSize="20sp"
