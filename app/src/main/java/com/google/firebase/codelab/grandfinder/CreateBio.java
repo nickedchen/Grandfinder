@@ -1,6 +1,7 @@
 package com.google.firebase.codelab.grandfinder;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.ActionBar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -37,7 +38,7 @@ public class CreateBio extends AppCompatActivity {
         return true;
     }
 
-    public void saveChange(View view) {
+    public void cont(View view) {
         DatabaseReference myRef = database.child("UserProfile");
 
         EditText editText1 = (EditText) findViewById(R.id.name);

@@ -131,10 +131,10 @@
         android:id="@+id/saveChanges"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="135dp"
+        android:layout_marginEnd="155dp"
         android:layout_marginBottom="40dp"
-        android:onClick="saveChange"
-        android:text="Save Changes"
+        android:onClick="cont"
+        android:text="Continue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
