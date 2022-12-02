@@ -101,7 +101,7 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private fun goToMainActivity() {
-        startActivity(Intent(this, landingPage::class.java))
+        startActivity(Intent(this, CreateBio::class.java))
     }
 
     companion object {

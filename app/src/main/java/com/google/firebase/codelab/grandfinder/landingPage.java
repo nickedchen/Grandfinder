@@ -47,6 +47,13 @@ public class landingPage extends AppCompatActivity {
         next();
         System.out.println("DONE");
         System.out.println(names.toString());
+
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null){
+            String value = bundle.getString("name");
+            TextView textView = findViewById(R.id.textView6);
+            textView.setText("Signed in as " + value);
+        }
     }
 
     public void jump(View view) {

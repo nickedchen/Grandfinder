@@ -122,6 +122,11 @@ public class CreateBio extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "Success Creating Bio", Toast.LENGTH_LONG).show();
 
         Intent intent = new Intent(this, landingPage.class);
+        Bundle bundle = new Bundle();
+        //Add your data from getFactualResults method to bundle
+        bundle.putString("name", message1);
+        //Add the bundle to the intent
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 
